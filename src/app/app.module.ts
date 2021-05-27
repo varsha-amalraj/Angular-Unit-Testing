@@ -10,7 +10,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { StoreModule } from '@ngrx/store';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularFireModule } from '@angular/fire';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/components/login/login.component';
 
 @NgModule({
   declarations: [

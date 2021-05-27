@@ -6,8 +6,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
-import { CommonService } from '../CommonService';
-import { AuthUserData } from '../model';
+import { CommonService } from '../../service/CommonService';
+import { AuthUserData } from '../../model';
 import { LoginComponent } from './login.component';
 
 
