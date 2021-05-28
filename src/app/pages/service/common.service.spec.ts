@@ -3,33 +3,36 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { CommonService } from './common.service';
 import { environment } from 'src/environments/environment';
-import { signInRequestMock, signInResponseMock } from '../testing/mockdata/common.service.mock';
+import { authState, logInRequestMock, logInResponseMock } from '../testing/mockdata/common.service.mock';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TOKEN } from '../constants';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { StoreState } from 'src/app/store/store';
 
 describe('CommonService', () => {
   let service: CommonService;
   let injector: TestBed;
   let httpMock: HttpTestingController;
   let url = environment.apiURL;
+  let mockStore: MockStore<StoreState['authData']>;
 
-  // const mockInitialAppState = {
-  //   auth: authState(),
-  // };
+  const mockInitialAppState = {
+    auth: authState(),
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         CommonService,
+        provideMockStore({
+          initialState: { ...mockInitialAppState },
+        }),
       ],
     });
     injector = getTestBed();
     service = injector.inject(CommonService);
-    // mockStore = TestBed.inject(MockStore);
+    mockStore = TestBed.inject(MockStore);
     httpMock = injector.inject(HttpTestingController);
-
-    // authToken = mockStore.overrideSelector(getAuthToken, null);
-    // email = mockStore.overrideSelector(getUserEmail, '');
   });
 
   afterEach(() => {
@@ -37,19 +40,19 @@ describe('CommonService', () => {
   });
   describe('#login', () => {
     it('returns Observable should match the data', () => {
-      service.login(signInRequestMock).subscribe((res) => {
+      service.login(logInRequestMock).subscribe((res) => {
         expect(res).toEqual(res)
       });
 
       const req = httpMock.expectOne(`${url}v1/login`);
       expect(req.request.method).toEqual('POST');
-      expect(req.request.body).toEqual(signInRequestMock);
+      expect(req.request.body).toEqual(logInRequestMock);
 
-      req.flush(signInResponseMock);
+      req.flush(logInResponseMock);
     });
 
     it('returns 404 status code when server cannot find the requested resource', () => {
-      service.login(signInRequestMock).subscribe(
+      service.login(logInRequestMock).subscribe(
         (data) => fail('should have failed with 404 error'),
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404, 'status');

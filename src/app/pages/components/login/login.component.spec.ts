@@ -141,11 +141,6 @@ describe('LoginComponent', () => {
           mobileNumber.setValue('');
           expect(mobileNumber.errors.required).toEqual(true);
         });
-
-        // it('invalid mobilenumber', () => {
-        //   mobileNumber.setValue('');
-        //   expect(mobileNumber.errors.pattern).toEqual('^((\\+91-?)|0)?[0-9]{10}$');
-        // });
       });
 
       describe('Password', () => {
@@ -174,17 +169,6 @@ describe('LoginComponent', () => {
         password: '12345678',
       });
     });
-    // it('should make a call to service.login()', () => {
-    //   spyOn(component.service, 'login').and.callThrough();
-
-    //   component.onSubmit();
-
-    //   expect(component.service.login).toHaveBeenCalled();
-    //   const router = TestBed.inject(Router);
-    //   const routerSpy = spyOn(router, 'navigate');
-    //   expect(routerSpy).toHaveBeenCalledWith(['/user-detail']);
-    // });
-
     it('calls common service', () => {
       const service = TestBed.inject(CommonService);
 
