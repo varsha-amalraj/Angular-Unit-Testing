@@ -2,6 +2,9 @@ export interface LoginFormData {
   mobile_no: string;
   password: string;
 }
+export interface SignInParams {
+  [key: string]: LoginFormData;
+}
 export interface AuthUserData {
   token: string;
   id: number;

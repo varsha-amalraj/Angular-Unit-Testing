@@ -4,11 +4,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { CommonService } from '../../service/CommonService';
 import { TOASTR_DURATION, TOKEN } from '../../constants';
 import { AuthUserData, LoginFormData } from '../../model';
 import { StoreState } from 'src/app/store/store';
 import * as authAction from '../../store/actions/authAction';
+import { CommonService } from '../../service/common.service';
 
 @Component({
   selector: 'app-login',
