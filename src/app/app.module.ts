@@ -11,11 +11,14 @@ import { StoreModule } from '@ngrx/store';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularFireModule } from '@angular/fire';
 import { LoginComponent } from './pages/components/login/login.component';
+import { UserDetailComponent } from './pages/components/user-detail/user-detail.component';
+import * as store from './store/store';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { LoginComponent } from './pages/components/login/login.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxDaterangepickerMd.forRoot(),
-    // StoreModule.forRoot(store.reducers, { metaReducers: store.metaReducers }),
+    StoreModule.forRoot(store.reducers, { metaReducers: store.metaReducers }),
     NgxPaginationModule,
     // AngularFireModule.initializeApp(environment.firebaseConfig),
   ],

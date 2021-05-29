@@ -17,6 +17,10 @@ describe('LoginComponent', () => {
   let authServiceMock: any;
   let store: MockStore;
   let mockData: AuthUserData;
+  const data = {
+    startDate: '10/05/2021',
+    endDate: '30/05/2021'
+  };
 
 
   beforeEach(async () => {
@@ -32,7 +36,10 @@ describe('LoginComponent', () => {
         RouterTestingModule,
         ToastrModule.forRoot(),
       ],
-      providers: [provideMockStore(), { provide: CommonService, useValue: authServiceMock }],
+      providers: [provideMockStore(), { provide: CommonService, useValue: authServiceMock },
+        provideMockStore({
+          initialState: { data },
+        }),],
     }).compileComponents();
   });
 
@@ -178,8 +185,6 @@ describe('LoginComponent', () => {
       component.onSubmit();
 
       expect(service.login).toHaveBeenCalled();
-      // expect(routerSpy).toHaveBeenCalledWith(['/user-detail']);
-
     });
 
     it('shows error message when #onSubmit() is errored out', () => {

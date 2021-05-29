@@ -1,4 +1,4 @@
-import { AuthUserData, LoginFormData, SignInParams } from "../../model";
+import { AuthUserData, LoginFormData, userDataParams } from "../../model";
 
 export const logInRequestMock: LoginFormData = {
   mobile_no: '9000000001',
@@ -19,3 +19,20 @@ export const authState = () => ({
   role: 'Admin',
   name: 'Varsha'
 });
+export const responseUserDataMock: userDataParams = {
+  users: {
+    id: 1,
+    mobile_no: '9876543210',
+    pincode: '629251',
+    pincode_status: 'test',
+    last_conversation_id: 1,
+    treatment_subscription_id: 1,
+    dt_eng_subscription_id: 3,
+    created_at: '',
+  }
+}
+
+export const requestUserDataMock = {
+  created_from: '',
+  created_till: ''
+}

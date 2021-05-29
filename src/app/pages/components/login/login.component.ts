@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           name: response.body.name
         };
         this.store.dispatch(new authAction.SetAuthUser(this.loggedinUserData));
-        // this.router.navigate(['/user-detail']);
+        this.router.navigate(['/user-detail']);
       },
       (error: HttpErrorResponse) => {
         this.toastr.error(error[0], 'Error', {
